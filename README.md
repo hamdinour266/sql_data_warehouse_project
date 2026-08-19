@@ -44,7 +44,7 @@ The solution follows the Medallion Architecture pattern, enforcing separation of
 * **Database Engine:** Microsoft SQL Server 2019+
 * **ETL Language:** T-SQL (Stored Procedures, Window Functions, CTEs)[cite: 7]
 * **Data Quality:** Automated T-SQL Validation Suites[cite: 7, 16, 17]
-* * **Orchestration:** Python 3.x (`pyodbc`)
+* **Orchestration:** Python 3.x (`pyodbc`)
 * **Naming Conventions:** Strict `snake_case` policy with schema-scoped objects (`bronze.`, `silver.`, `gold.`)
 ---
 ## 📂 Repository Structure
