@@ -22,7 +22,8 @@ This repository contains the complete engineering implementation of a data wareh
 
 The solution follows the Medallion Architecture pattern, separating data ingestion, transformation, and business consumption:
 
-<img width="1544" height="912" alt="Medallion Architecture" src="https://github.com/user-attachments/assets/5f16b003-dd44-47c8-9052-f359c01fdc9c" />
+<img width="1024" height="605" alt="image" src="https://github.com/user-attachments/assets/1d43165d-124f-402e-a461-ea5a6750a19c" />
+
 
 | Layer | Purpose | Object Type | Load Strategy | Key Characteristics |
 | :--- | :--- | :--- | :--- | :--- |
