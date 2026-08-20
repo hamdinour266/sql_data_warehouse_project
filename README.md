@@ -73,13 +73,13 @@ sql_data_warehouse_project/
  ├── tests/                        # ✅ Data Quality Validation
  │   ├── test_silver_quality_checks.sql
  │   └── test_gold_quality_checks.sql
- ── .gitignore
+ |── .gitignore
  ├── LICENSE
- ── README.md
+ |── README.md
 ```
 ---
 
-## ⚙️Installation & Execution
+## ⚙️ Installation & Execution
 
 ### Prerequisites :
 1. **SQL Server Instance** running locally or remotely.
@@ -90,7 +90,7 @@ sql_data_warehouse_project/
 **Install the required Python dependency:**
 pip install pyodbc
 
-### 🔧Configuration :
+### 🔧 Configuration :
 Update connection parameters in `orchestration/config.py`:
 ```python
 DB_CONFIG = {
@@ -100,13 +100,13 @@ DB_CONFIG = {
     'trusted_connection': 'yes'}
 ```
 
-### 🚀Running the Pipeline
+### 🚀 Running the Pipeline
 Execute the end-to-end batch load with built-in monitoring:
 
 ```bash
 cd orchestration
 python run_pipeline.py
-````
+```
 The orchestration process executes the layers sequentially:
 ```text
 Bronze Layer
@@ -116,7 +116,7 @@ Silver Layer
 Pipeline Completed
 ```
 The Python orchestration layer also provides execution monitoring, duration tracking, success/failure reporting, and error propagation.
-###Expected Output:
+### Expected Output:
 ```text
 ============================================================
 Starting Medallion Data Pipeline Batch Load
@@ -173,12 +173,11 @@ DATEADD(day, -1, LEAD(prd_start_dt) OVER (
 ```
 **The logic results in:**
 
-*.*Active records having prd_end_dt IS NULL.
-*.*Expired records having an end date equal to the next version's start date minus one day.
-
+- **Active records:** `prd_end_dt IS NULL`.
+- **Expired records:** End date equals the next version's start date minus one day.
 This allows historical product versions to be represented while maintaining the currently active record.
 
-###2. Composite Key Parsing:
+### 2. Composite Key Parsing:
 ERP product keys contain embedded category information.
 The transformation extracts the category identifier and product code from the composite key:
 -- Category ID Extraction
@@ -190,7 +189,7 @@ SUBSTRING(TRIM(prd_key), 7, LEN(TRIM(prd_key))) AS prd_key
 ```
 This transformation separates hierarchical category information from the product identifier to support integration and analytical modeling.
 
-###3. Transactional Safety:
+### 3. Transactional Safety:
 Silver layer procedures use explicit transaction handling to protect data integrity during transformations:
 ```sql
 BEGIN TRY
@@ -207,7 +206,7 @@ END CATCH
 This ensures that a failed transformation does not leave the target table in a partially loaded state.
 The THROW statement also propagates the error to the Python orchestration layer.
 
-4.###Surrogate Key Generation:
+### 4. Surrogate Key Generation
 Gold dimensions use ROW_NUMBER() to generate surrogate keys based on natural keys.
 
 This approach provides stable and reproducible surrogate key values without relying on identity columns or database sequences.
@@ -226,12 +225,12 @@ The Gold layer follows a Star Schema designed for analytical consumption.
 | gold.dim_products | Dim View | Active-only product catalog. Includes category hierarchy and SCD-effective pricing. |
 
 ## Data Model Characteristics
-*Fact Table:* gold.fact_sales
-*Dimensions:* gold.dim_customers, gold.dim_products
-*Surrogate Keys:* Generated using ROW_NUMBER()
-*Integration:* CRM and ERP data unified through Silver-layer transformations
-*Historical Tracking:* SCD Type 2 applied to product versions
-*Consumption:* Designed for analytical and BI workloads
+- **Fact Table:** `gold.fact_sales`
+- **Dimensions:** `gold.dim_customers`, `gold.dim_products`
+- **Surrogate Keys:** Generated using `ROW_NUMBER()`
+- **Integration:** CRM and ERP data unified through Silver-layer transformations
+- **Historical Tracking:** SCD Type 2 applied to product versions
+- **Consumption:** Designed for analytical and BI workloads
 
 ---
 
@@ -248,7 +247,7 @@ The project applies several professional data engineering practices:
 - **Data Quality Gates:** Dedicated validation scripts are executed to verify data integrity across Silver and Gold layers.
 ---
 
-##  License
+## 📄 License
 
 MIT License © 2024. Free for educational and portfolio use. Attribution appreciated.
 
