@@ -83,13 +83,13 @@ sql_data_warehouse_project/
 
 **Prerequisites**
 
-SQL Server Instance running locally or remotely.
+1. **SQL Server Instance** running locally or remotely.
 
-ODBC Driver 17 for SQL Server installed.
+2. **ODBC Driver 17 for SQL Server** installed.
 
-Python 3.8+ with pyodbc library: pip install pyodbc
+3. **Python 3.8+** with pyodbc library: pip install pyodbc
 
-Source CSV files placed in datasets/source_crm/ and datasets/source_erp/.
+4. **Source CSV** files placed in datasets/source_crm/ and datasets/source_erp/.
 
 **Configuration**
 
@@ -109,7 +109,7 @@ Execute the end-to-end batch load with built-in monitoring:
 cd orchestration
 python run_pipeline.py
 
-**Expected Output:**
+**Expected Output**:
 
 ============================================================
 Starting Medallion Data Pipeline Batch Load
@@ -155,7 +155,7 @@ Data integrity is enforced at two critical checkpoints. All quality check script
 
 **Metric Sanity**: No negative prices, quantities, or sales amounts.
 
-**⚠️ Production Note: In a CI/CD environment, these SQL checks should be wrapped in a Python test harness that fails the pipeline if any query returns > 0 rows.**
+⚠️ Production Note: In a CI/CD environment, these SQL checks should be wrapped in a Python test harness that fails the pipeline if any query returns > 0 rows.
 ---
 **🧠 Advanced Engineering Decisions**
 
@@ -201,43 +201,25 @@ Gold layer uses ROW_NUMBER() over natural keys for stable, reproducible surrogat
 **📊 Target Data Model (Star Schema)**
 <img width="1500" height="667" alt="image" src="https://github.com/user-attachments/assets/b4b588e5-d381-4b32-92a2-9211bdd84cf6" />
 
-Object
-
-Type
-
-Description
-
-gold.fact_sales
-
-Fact View
-
-Transactional grain. Links to dims via surrogate keys. Measures: sales_amount, quantity, price.
-
-gold.dim_customers
-
-Dim View
-
-Conformed dimension. Merges CRM demographics + ERP location/birthdate. Master source: CRM.
-
-gold.dim_products
-
-Dim View
-
-Active-only product catalog. Includes category hierarchy and SCD-effective pricing.
+| Object | Type | Description |
+| :--- | :--- | :--- |
+| gold.fact_sales | Fact View | Transactional grain. Links to dims via surrogate keys. Measures: sales_amount, quantity, price. |
+| gold.dim_customers | Dim View | Conformed dimension. Merges CRM demographics + ERP location/birthdate. Master source: CRM. |
+| gold.dim_products | Dim View | Active-only product catalog. Includes category hierarchy and SCD-effective pricing. |
 
 **Contributing & Standards**
 
 This project adheres to senior-level engineering practices:
 
-**Idempotency:** All ETL procedures are re-runnable without side effects.
+1. **Idempotency:** All ETL procedures are re-runnable without side effects.
 
-**Explicit Typing:** Never rely on implicit conversions; always CAST/CONVERT.
+2. **Explicit Typing:** Never rely on implicit conversions; always CAST/CONVERT.
 
-**Schema Scoping:** Always prefix objects (bronze.table, not just table).
+3. **Schema Scoping:** Always prefix objects (bronze.table, not just table).
 
-**Error Propagation:** Catch-blocks re-THROW errors to ensure orchestration layer detects failures.
+4. **Error Propagation:** Catch-blocks re-THROW errors to ensure orchestration layer detects failures.
 
-**Documentation First:** Every stored procedure includes header comments with purpose, params, and usage.
+5. **Documentation First:** Every stored procedure includes header comments with purpose, params, and usage.
 ---
 **📄 License**
 
