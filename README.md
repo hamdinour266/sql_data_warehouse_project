@@ -217,7 +217,8 @@ These surrogate keys are then used to establish relationships between the fact t
 ---
 **📊 Target Data Model (Star Schema)**
 The Gold layer follows a Star Schema designed for analytical consumption.
-<img width="1500" height="667" alt="image" src="https://github.com/user-attachments/assets/b4b588e5-d381-4b32-92a2-9211bdd84cf6" />
+<img width="1024" height="455" alt="image" src="https://github.com/user-attachments/assets/4b532e39-1ec4-48ec-8439-500a9fd43620" />
+
 
 | Object | Type | Description |
 | :--- | :--- | :--- |
