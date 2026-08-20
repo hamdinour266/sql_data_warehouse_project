@@ -79,9 +79,9 @@ sql_data_warehouse_project/
 ── README.md
 ```
 ---
-️**Installation & Execution**
+️**Installation & Execution :**
 
-**Prerequisites**
+**Prerequisites :**
 
 1. **SQL Server Instance** running locally or remotely.
 
@@ -91,7 +91,7 @@ sql_data_warehouse_project/
 
 4. **Source CSV** files placed in datasets/source_crm/ and datasets/source_erp/.
 
-**Configuration**
+**Configuration :**
 
 Update connection parameters in orchestration/config.py:
 
@@ -106,32 +106,30 @@ DB_CONFIG= {
 
 Execute the end-to-end batch load with built-in monitoring:
 
-cd orchestration
-python run_pipeline.py
+cd orchestration python run_pipeline.py
 
-**Expected Output**:
+**Expected Output :**
 
+============================================================
 ============================================================
 Starting Medallion Data Pipeline Batch Load
 Start Time: 2024-05-20 14:30:00
-============================================================
 
 --- 1. BRONZE LAYER ---
->> Loading bronze.crm_cust_info... Success! (0.45s)
->> Loading bronze.erp_loc_a101... Success! (0.12s)
-Bronze Layer Execution Duration: 1.82s
+
+    Loading bronze.crm_cust_info... Success! (0.45s) Loading bronze.erp_loc_a101...
+    Success! (0.12s) Bronze Layer Execution Duration: 1.82s
 
 --- 2. SILVER LAYER ---
->> Executing silver.load_silver...
->> Loading silver.crm_cust_info... Success! (0.33s)
->> Loading silver.crm_prd_info... Success! (SCD Type 2 Applied)
-Silver Layer Execution Duration: 2.15s
+
+    Executing silver.load_silver... Loading silver.crm_cust_info... Success! (0.33s) Loading
+    silver.crm_prd_info... Success! (SCD Type 2 Applied) Silver Layer Execution Duration:
+    2.15s
 
 ============================================================
-PIPELINE EXECUTED SUCCESSFULLY!
-Total Batch Duration: 4.12 seconds
-End Time: 2024-05-20 14:30:04
 ============================================================
+PIPELINE EXECUTED SUCCESSFULLY! Total
+Batch Duration: 4.12 seconds End Time: 2024-
 ---
 **🔍 Data Quality & Governance**
 
