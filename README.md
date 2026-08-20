@@ -49,30 +49,33 @@ The solution follows the Medallion Architecture pattern, enforcing separation of
 ---
 ## 📂 Repository Structure
 
+📂 Repository Structure
+
 sql_data_warehouse_project/
-├── datasets/                  # Source system extracts (CSV)
-│   ├── source_crm/            # cust_info, prd_info, sales_details
-│   └── source_erp/            # cust_az12, loc_a101, px_cat_g1v2
-├── docs/                      # Architecture diagrams & Data Catalog
-│   ├── data_architecture.png  # Medallion flow visualization
-│   ├── data_catalog.md        # Column-level metadata & lineage
-│   └── data_models/           # ERD & Star Schema diagrams
-├── orchestration/             #  Python Automation Engine
-│   ├── config.py              # Secure DB configuration
-│   ├── db_connector.py        # pyodbc wrapper with error handling
-│   └── run_pipeline.py        # Main entry point for batch execution
-├── sql_scripts/               # 💾 T-SQL Implementation
-│   ├── init_database.sql      # Schema provisioning
-│   ├── bronze/                # DDLs & Bulk Load procedures
-│   ├── silver/                # Cleansing procs & Master Orchestrator
-│   │   └── transformations/   # Modular entity-specific ETL logic
-│   └── gold/                  # Dimensional views (Star Schema)
-├── tests/                     # ✅ Data Quality Validation Suites
+├── datasets/                     # Source System Extracts (CSV)
+│   ├── source_crm/               # CRM System Files
+│   └── source_erp/               # ERP System Files
+├── docs/                         # Architecture & Governance Docs
+│   ├── data_architecture.png     # High-Level Medallion Diagram
+│   ├── data_catalog.md           # Column-level Metadata & Lineage
+│   ├── naming-conventions.md     # Engineering Style Guide
+│   └── data_models/              # ERD & Star Schema Visuals
+├── orchestration/                # 🐍 Pipeline Execution Engine
+│   ├── config.py                 # Secure DB Connection Config
+│   ├── db_connector.py           # Reusable PyODBC Manager
+│   └── run_pipeline.py           # Main Orchestrator w/ Telemetry
+├── sql_scripts/                  # 🗄️ Database Objects
+│   ├── init_database.sql         # Schema & Permission Setup
+│   ├── bronze/                   # DDL + Bulk Ingestion Procs
+│   ├── silver/                   # DDL + Transformation Procs
+│   │   └── transformations/      # Granular Table-Level ETL
+│   └── gold/                     # Dimensional Model Views
+├── tests/                        # ✅ Data Quality Validation
 │   ├── test_silver_quality_checks.sql
 │   └── test_gold_quality_checks.sql
-├── .gitignore
+── .gitignore
 ├── LICENSE
-└── README.md
+── README.md
 ---
 ️**Installation & Execution**
 
