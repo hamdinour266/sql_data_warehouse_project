@@ -74,6 +74,9 @@ sql_data_warehouse_project/
  ├── tests/                        # ✅ Data Quality Validation
  │   ├── test_silver_quality_checks.sql
  │   └── test_gold_quality_checks.sql
+ ├── analytics/                # 📊 NEW: Analytics & Reporting Suite
+ │       ├── 01_eda/               # Exploratory Data Analysis (01-06)
+ │       └── 02_advanced_analytics/ # Advanced Analytics & Reports (01-06)
  |── .gitignore
  ├── LICENSE
  |── README.md
