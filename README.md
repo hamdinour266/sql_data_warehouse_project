@@ -1,4 +1,4 @@
-# Enterprise Sales Data Warehouse | Medallion Architecture & Automated ETL
+# Enterprise Sales Data Warehouse | Medallion Architecture & Automated ETL  + Analytics Suite
 
 A robust SQL Server Data Warehouse integrating CRM and ERP systems. The project implements a Medallion Architecture (Bronze → Silver → Gold) with automated Python orchestration, comprehensive data quality validation, advanced SQL transformations, and dimensional modeling designed for BI consumption.
 
