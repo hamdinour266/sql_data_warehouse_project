@@ -26,7 +26,7 @@ This repository contains the complete engineering implementation of an end-to-en
 
 The solution follows the Medallion Architecture pattern, separating data ingestion, transformation, and business consumption:
 
-<img width="1024" height="605" alt="image" src="https://github.com/user-attachments/assets/1d43165d-124f-402e-a461-ea5a6750a19c" />
+<img width="1024" height="605" alt="Medallion Architecture Diagram showing Bronze, Silver, Gold, Reporting, and Analytics layers with data flow from CRM/ERP sources to BI consumption" src="https://github.com/user-attachments/assets/1d43165d-124f-402e-a461-ea5a6750a19c" />
 
 
 | Layer | Purpose | Object Type | Load Strategy | Key Characteristics |
